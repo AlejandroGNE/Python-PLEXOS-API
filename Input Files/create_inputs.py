@@ -12,7 +12,7 @@ P9 Tested
 import os, sys, clr
 
 # load PLEXOS assemblies
-sys.path.append('C:\Program Files\Energy Exemplar\PLEXOS 10.0 API')
+sys.path.append(r'C:\Program Files\Energy Exemplar\PLEXOS 10.0 API')
 clr.AddReference('PLEXOS_NET.Core')
 clr.AddReference('EEUTILITY')
 clr.AddReference('EnergyExemplar.PLEXOS.Utility')
@@ -90,10 +90,11 @@ def add_plexos_prop(db, parent_class_id, child_class_id, collection_id, \
     db.AddProperty(mem_id, enum_id, 1, prop_value, None, None, None, \
               None, None, None, 0, PeriodEnum.Interval)
     
+folder = os.path.dirname(__file__)
+newfile = os.path.join(folder, 'new.xml')
 # delete the modified file if it already exists
-if os.path.exists('new.xml'):
-    os.remove('new.xml')
-
+if os.path.exists(newfile):
+    os.remove(newfile)
 # Create an object to store the input data
 db = DatabaseCore()
 db.DisplayAlerts = False
@@ -105,8 +106,8 @@ Boolean NewEmptyDatabase(
 	Boolean overwrite[ = False]
 	)
 '''
-db.NewEmptyDatabase('./new.xml', True)
-db.Connection('new.xml')
+db.NewEmptyDatabase(newfile, True)
+db.Connection(newfile)
 
 # Build enum to string lookups
 cache_classes(db)
