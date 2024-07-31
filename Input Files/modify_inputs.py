@@ -13,7 +13,7 @@ import os, sys, clr
 from shutil import copyfile
 
 # load PLEXOS assemblies
-sys.path.append('C:/Program Files/Energy Exemplar/PLEXOS 10.0 API')
+sys.path.append('C:/Program Files/Energy Exemplar/PLEXOS 9.0 API')
 clr.AddReference('PLEXOS_NET.Core')
 clr.AddReference('EEUTILITY')
 clr.AddReference('EnergyExemplar.PLEXOS.Utility')
